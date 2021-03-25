@@ -55,6 +55,7 @@
 				newMessage.innerText = data;
 				newMessage.classList.add("chat");
 				storage.appendChild(newMessage);
+				storage.scrollTop = storage.scrollHeight;
 			}
 		});
 	</script>
