@@ -2,60 +2,15 @@
 <html>
 <head>
 	<title>Chat App</title>
-	<script src="/../../socket.io/socket.io.js"></script>
-	<script type="text/javascript">
-		var socket = io.connect(location.origin);
-	</script>
-	<style type="text/css">
-		body {
-			margin: 0;
-			padding: 0;
-		}
-		#chatbar {
-			position: fixed;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			display: flex;
-			height: 5vh;
-			width: 100%;
-		}
-		.chat {
-			width: calc(100%-1px);
-			border: 1px solid black;
-		}
-		#messages {
-			width: 99vw;
-			border: none;
-			margin-left: 0.5vw;
-			margin-right: 0.5vw;
-			position: fixed;
-			top: 1vh;
-			left: 0;
-			height: 92vh;
-			overflow-y: auto;
-		}
-	</style>
 </head>
 <body>
-	<div id="messages"></div>
-	<input type="text" name="chatbar" id="chatbar"/>
+	<p>Enter your name: </p>
+	<input type="text" name="name" id="name"/>
 	<script type="text/javascript">
-		var input = document.getElementById("chatbar");
+		var input = document.getElementById("name");
 		input.addEventListener("keyup", function(event) {
-			if(event.key === "Enter") {
-				socket.emit("chat", input.value);
-				input.value = "";
-			}
-		});
-		var storage = document.getElementById("messages");
-		socket.on("chat", function(data) {
-			if(data != "") {
-				var newMessage = document.createElement("div");
-				newMessage.innerText = data;
-				newMessage.classList.add("chat");
-				storage.appendChild(newMessage);
-				storage.scrollTop = storage.scrollHeight;
+			if(event.key === "Enter" && input.value != "") {
+				window.location.href = window.location.href + "/chat/?name=" + input.value;
 			}
 		});
 	</script>
