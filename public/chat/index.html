@@ -8,6 +8,9 @@
 		const queryString = window.location.search;
 		const urlParams = new URLSearchParams(queryString);
 		const name = urlParams.get("name");
+		if(name == null) {
+			window.location.href = window.location.origin;
+		}
 	</script>
 	<style type="text/css">
 		body {
