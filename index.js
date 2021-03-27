@@ -5,7 +5,7 @@ app.use(express.static(__dirname + "/public"));
 var socket = require('socket.io');
 var io = socket(server);
 const admin = require('firebase-admin');
-const serviceAccount = require('google-credentials.json');
+const serviceAccount = require('./google-credentials.json');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
