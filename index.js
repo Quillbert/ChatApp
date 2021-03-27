@@ -5,7 +5,7 @@ app.use(express.static(__dirname + "/public"));
 var socket = require('socket.io');
 var io = socket(server);
 const admin = require('firebase-admin');
-const serviceAccount = require('./../hamchat-server-308821-01547b5a84a2.json');
+const serviceAccount = require('google-credentials.json');
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount)
