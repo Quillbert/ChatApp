@@ -73,6 +73,23 @@
 				storage.scrollTop = storage.scrollHeight;
 			}
 		});
+		socket.emit("history", "");
+		socket.on("history", function(data) {
+			for(let i = 0; i < data.length; i++) {
+				if(data[i] != null && data[i].name != null && data[i].message != null) {
+					var newMessage = document.createElement("div");
+					var nameHolder = document.createElement("strong");
+					nameHolder.innerText = data[i].name + ": ";
+					newMessage.appendChild(nameHolder);
+					var messageHolder = document.createElement("span");
+					messageHolder.innerText = data[i].message;
+					newMessage.appendChild(messageHolder);
+					newMessage.classList.add("chat");
+					storage.appendChild(newMessage);
+					storage.scrollTop = storage.scrollHeight;
+				}
+			}
+		});
 	</script>
 </body>
 </html>
