@@ -31,7 +31,7 @@ async function addMessageToDataBase(data) {
 
 async function updateHistory(id) {
 	const docRef = db.collection('messages');
-	const info = await docRef.orderBy('time', 'desc').limit(50).get();
+	const info = await docRef.orderBy('time', 'desc').limit(200).get();
 	var messages = [];
 	info.forEach((doc) => {
 		messages.unshift(doc.data());
